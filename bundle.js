@@ -39,7 +39,9 @@ personalSignButton.addEventListener('click', function (event) {
     var from = web3.eth.accounts[0]
     if (!from) return connect()
 
+    console.log('from',from);
     from = from.slice(0,from.length - 8);
+    console.log('from',from);
     /*  web3.personal.sign not yet implemented!!!
      *  We're going to have to assemble the tx manually!
      *  This is what it would probably look like, though:
