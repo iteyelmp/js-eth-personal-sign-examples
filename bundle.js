@@ -36,11 +36,9 @@ personalSignButton.addEventListener('click', function (event) {
     var msg = ethUtil.bufferToHex(new Buffer(text, 'utf8'))
     // var msg = '0x1' // hexEncode(text)
     console.log(msg)
-    var fromQKCAddress = web3.eth.accounts[0]
-    if (!fromQKCAddress) return connect()
+    var from = web3.eth.accounts[0]
+    if (!from) return connect()
 
-    console.log('fromQKC',fromQKCAddress);
-    var from = fromQKCAddress.slice(0, fromQKCAddress.length - 8);
     console.log('from',from);
     /*  web3.personal.sign not yet implemented!!!
      *  We're going to have to assemble the tx manually!
@@ -71,7 +69,9 @@ personalSignButton.addEventListener('click', function (event) {
         const recovered = sigUtil.recoverPersonalSignature(msgParams)
         console.dir({recovered})
 
-        if (recovered === from) {
+        let fromQKC = from.slice(0, from.length - 8);
+        console.log('fromQKC',fromQKC);
+        if (recovered === from || recovered  === fromQKC) {
             console.log('SigUtil Successfully verified signer as ' + from)
             window.alert('SigUtil Successfully verified signer as ' + from)
         } else {
