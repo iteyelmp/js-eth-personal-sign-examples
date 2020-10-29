@@ -38,7 +38,7 @@ personalSignButton.addEventListener('click', function (event) {
     if (!fromQKCAddress) return connect()
 
     console.log('fromQKC',fromQKCAddress);
-    var from = fromQKCAddress.slice(0, from.length - 8);
+    var from = fromQKCAddress.slice(0, fromQKCAddress.length - 8);
     console.log('from',from);
     /*  web3.personal.sign not yet implemented!!!
      *  We're going to have to assemble the tx manually!
@@ -225,7 +225,7 @@ signTypedDataButton.addEventListener('click', function (event) {
     */
 
     console.log('fromQKC',fromQKCAddress);
-    var from = fromQKCAddress.slice(0, from.length - 8);
+    var from = fromQKCAddress.slice(0, fromQKCAddress.length - 8);
     console.log('from',from);
     console.log('CLICKED, SENDING PERSONAL SIGN REQ')
     var params = [msgParams, from]
