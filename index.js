@@ -34,11 +34,11 @@ personalSignButton.addEventListener('click', function (event) {
     var msg = ethUtil.bufferToHex(new Buffer(text, 'utf8'))
     // var msg = '0x1' // hexEncode(text)
     console.log(msg)
-    var from = web3.eth.accounts[0]
-    if (!from) return connect()
+    var fromQKCAddress = web3.eth.accounts[0]
+    if (!fromQKCAddress) return connect()
 
-    console.log('from',from);
-    from = from.slice(0, from.length - 8);
+    console.log('fromQKC',fromQKCAddress);
+    var from = fromQKCAddress.slice(0, from.length - 8);
     console.log('from',from);
     /*  web3.personal.sign not yet implemented!!!
      *  We're going to have to assemble the tx manually!
@@ -212,8 +212,8 @@ signTypedDataButton.addEventListener('click', function (event) {
         }
     ]
 
-    var from = web3.eth.accounts[0]
-    if (!from) return connect()
+    var fromQKCAddress = web3.eth.accounts[0]
+    if (!fromQKCAddress) return connect()
 
     /*  web3.eth.signTypedData not yet implemented!!!
      *  We're going to have to assemble the tx manually!
@@ -224,7 +224,9 @@ signTypedDataButton.addEventListener('click', function (event) {
       })
     */
 
-    from = from.slice(0,from.length - 8);
+    console.log('fromQKC',fromQKCAddress);
+    var from = fromQKCAddress.slice(0, from.length - 8);
+    console.log('from',from);
     console.log('CLICKED, SENDING PERSONAL SIGN REQ')
     var params = [msgParams, from]
     console.dir(params)
